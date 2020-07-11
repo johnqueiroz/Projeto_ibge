@@ -113,18 +113,18 @@
                     <div>
 
                       
-
+                      <form id="formCad" name="form_cadastro_eqp_UE" action="Cadastro_por_UE.php" method="POST">
 
                       <div class="form-row">
 
                         <div class="form-group col-md-6">
                           <label for="inputMaterial">Especificações</label>
-                          <input type="text" class="form-control" id="inputMaterial" placeholder="Modelo/Marca">
+                          <input name="especificacoes_UE" type="text" class="form-control" id="inputMaterial" placeholder="Modelo/Marca">
                         </div>
 
                         <div class="form-group col-md-6">
                           <label for="inputPatrim">Patrimônio</label>
-                          <input type="number" class="form-control" id="inputPatrim" placeholder="Ex: 590589">
+                          <input name="patrimonio_UE" type="number" class="form-control" id="inputPatrim" placeholder="Ex: 590589">
                         </div>
 
                       </div>
@@ -132,12 +132,12 @@
 
                         <div class="form-group col-md-6">
                           <label for="inputSerie">Número de série</label>
-                          <input type="text" class="form-control" id="inputSerie" placeholder="Ex: 4A4265A">
+                          <input name="serie_UE" type="text" class="form-control" id="inputSerie" placeholder="Ex: 4A4265A">
                         </div>
 
                         <div class="form-group col-md-6">
                             <label for="inputPrevSaida">Previsão de saida</label>
-                            <input type="date" class="form-control" id="inputPrevSaida"
+                            <input name="prev_saida_UE" type="date" class="form-control" id="inputPrevSaida"
                               >
 
                           </div>
@@ -147,14 +147,14 @@
                       <div class="form-row">
                         <div class="form-group col-md-6">
                           <label for="inputPrevChegada">Previsão de chegada</label>
-                          <input type="date" class="form-control" id="inputPrevChegada"
+                          <input name="prev_chegada_UE" type="date" class="form-control" id="inputPrevChegada"
                             >
 
                         </div>
 
                         <div class="form-group col-md-6">
                           <label for="inputQuantChegada">Quantidade de equipamentos para chegar</label>
-                          <input type="number" class="form-control" id="inputQuantChegada"
+                          <input name="quant_chegada_UE" type="number" class="form-control" id="inputQuantChegada"
                             >
 
                         </div>
@@ -162,8 +162,8 @@
                       </div>
                     
                       
-                      <button type="submit" class="btn btn-primary" href="#">Salvar</button>
-                 
+                      <input type="submit" class="btn btn-primary">
+                      </form>
                   </div>
                  </div>
 
@@ -173,36 +173,38 @@
                   <div class="tab-pane fade" id="nav-area" role="tabpanel" aria-labelledby="nav-area-tab">
 
                     <div>
+
+                      <form id="formCad" name="form_cadastro_por_area" action="Cadastro_por_area.php" method="POST">
                         <div class="form-row">
                           <div class="form-group col-md-6">
                             <label for="inputMaterial2">Especificações</label>
-                            <input type="text" class="form-control" id="inputMaterial2" placeholder="Modelo/Marca">
+                            <input name="especificacoes_area" type="text" class="form-control" id="inputMaterial2" placeholder="Modelo/Marca">
                           </div>
                           <div class="form-group col-md-6">
                             <label for="inputPatrim2">Patrimônio</label>
-                            <input type="number" class="form-control" id="inputPatrim2" placeholder="Ex: 590589">
+                            <input name="patrimonio_area" type="number" class="form-control" id="inputPatrim2" placeholder="Ex: 590589">
                           </div>
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-6">
                               <label for="inputSerie2">Número de série</label>
-                              <input type="text" class="form-control" id="inputSerie2" placeholder="Ex: 4A4265A">
+                              <input name="serie_area" type="text" class="form-control" id="inputSerie2" placeholder="Ex: 4A4265A">
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="inputPrevSaida2">Previsão de saida</label>
-                                <input type="date" class="form-control" id="inputPrevSaida2"
+                                <input name="prev_saida_area" type="date" class="form-control" id="inputPrevSaida2"
                                   >
                               </div>
                             </div>
                         <div class="form-row">
                           <div class="form-group col-md-6">
                             <label for="inputPrevChegada2">Previsão de chegada</label>
-                            <input type="date" class="form-control" id="inputPrevChegada2"
+                            <input name="prev_chegada_area" type="date" class="form-control" id="inputPrevChegada2"
                               >
                           </div>
                           <div class="form-group col-md-6">
                             <label for="inputQuantChegada2">Quantidade de equipamentos para chegar</label>
-                            <input type="number" class="form-control" id="inputQuantChegada2"
+                            <input name="quant_chegada_area" type="number" class="form-control" id="inputQuantChegada2"
                               >
                           </div>
                         </div>
@@ -211,44 +213,48 @@
                           <input name="QualArea" type="text" class="form-control" id="inputQualArea">
                         </div>
                         
-                   
+                        <input type="submit" class="btn btn-primary">
+                      </form>
                     </div>
-                      <button type="submit" class="btn btn-primary" href="#">Salvar</button>
+                    
                     </div>
 
                     <div class="tab-pane fade" id="nav-subarea" role="tabpanel" aria-labelledby="nav-sub-tab">
 
                         <div>
+
+                          <form id="formCad" name="form_cadastro_por_subarea" action="Cadastro_por_subarea.php" method="POST">
+
                             <div class="form-row">
                               <div class="form-group col-md-6">
                                 <label for="inputMaterial3">Especificações</label>
-                                <input type="text" class="form-control" id="inputMaterial3" placeholder="Modelo/Marca">
+                                <input name="especificacoes_subarea" type="text" class="form-control" id="inputMaterial3" placeholder="Modelo/Marca">
                               </div>
                               <div class="form-group col-md-6">
                                 <label for="inputPatrim3">Patrimônio</label>
-                                <input type="number" class="form-control" id="inputPatrim3" placeholder="Ex: 590589">
+                                <input name="patrimonio_subarea" type="number" class="form-control" id="inputPatrim3" placeholder="Ex: 590589">
                               </div>
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-6">
                                   <label for="inputSerie3">Número de série</label>
-                                  <input type="text" class="form-control" id="inputSerie3" placeholder="Ex: 4A4265A">
+                                  <input name="serie_subarea" type="text" class="form-control" id="inputSerie3" placeholder="Ex: 4A4265A">
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="inputPrevSaida3">Previsão de saida</label>
-                                    <input type="date" class="form-control" id="inputPrevSaida3"
+                                    <input name="prev_saida_subarea" type="date" class="form-control" id="inputPrevSaida3"
                                       >
                                   </div>
                                 </div>
                             <div class="form-row">
                               <div class="form-group col-md-6">
                                 <label for="inputPrevChegada3">Previsão de chegada</label>
-                                <input type="date" class="form-control" id="inputPrevChegada3"
+                                <input name="prev_chegada_subarea" type="date" class="form-control" id="inputPrevChegada3"
                                   >
                               </div>
                               <div class="form-group col-md-6">
                                 <label for="inputQuantChegada3">Quantidade de equipamentos para chegar</label>
-                                <input type="number" class="form-control" id="inputQuantChegada3"
+                                <input name="quant_chegada_subarea" type="number" class="form-control" id="inputQuantChegada3"
                                   >
                               </div>
                             </div>
@@ -256,45 +262,48 @@
                               <label for="inputQualSubrea">Para qual Subarea?</label>
                               <input name="QualSubarea" type="text" class="form-control" id="inputQualSubarea">
                             </div>
-                            <button type="submit" class="btn btn-primary" href="#">Salvar</button>
+                            <input type="submit" class="btn btn-primary">
                        
-                            
+                          </form>
                         </div>
 
                     </div>
                     <div class="tab-pane fade" id="nav-posto" role="tabpanel" aria-labelledby="nav-posto-tab">
 
                         <div>
+
+                          <form id="formCad" name="form_cadastro_por_posto" action="Cadastro_por_posto.php" method="POST">
+
                             <div class="form-row">
                               <div class="form-group col-md-6">
                                 <label for="inputMaterial4">Especificações</label>
-                                <input type="text" class="form-control" id="inputMaterial4" placeholder="Modelo/Marca">
+                                <input name="especificacoes_posto" type="text" class="form-control" id="inputMaterial4" placeholder="Modelo/Marca">
                               </div>
                               <div class="form-group col-md-6">
                                 <label for="inputPatrim4">Patrimônio</label>
-                                <input type="number" class="form-control" id="inputPatrim4" placeholder="Ex: 590589">
+                                <input name="patrimonio_posto" type="number" class="form-control" id="inputPatrim4" placeholder="Ex: 590589">
                               </div>
                             </div>
                             <div class="form-row">
                             <div class="form-group col-md-6">
                               <label for="inputSerie4">Número de série</label>
-                              <input type="text" class="form-control" id="inputSerie4" placeholder="Ex: 4A4265A">
+                              <input name="serie_posto" type="text" class="form-control" id="inputSerie4" placeholder="Ex: 4A4265A">
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="inputPrevSaida4">Previsão de saida</label>
-                                <input type="date" class="form-control" id="inputPrevSaida4"
+                                <input name="prev_saida_posto" type="date" class="form-control" id="inputPrevSaida4"
                                   >
                               </div>
                             </div>
                             <div class="form-row">
                               <div class="form-group col-md-6">
                                 <label for="inputPrevChegada4">Previsão de chegada</label>
-                                <input type="date" class="form-control" id="inputPrevChegada4"
+                                <input name="prev_chegada_posto" type="date" class="form-control" id="inputPrevChegada4"
                                   >
                               </div>
                               <div class="form-group col-md-6">
                                 <label for="inputQuantChegada3">Quantidade de equipamentos para chegar</label>
-                                <input type="number" class="form-control" id="inputQuantChegada4"
+                                <input name="quant_chegada_posto" type="number" class="form-control" id="inputQuantChegada4"
                                   >
                               </div>
                             </div>
@@ -302,8 +311,8 @@
                               <label for="inputQualPosto">Para qual Posto?</label>
                               <input name="QualPosto" type="text" class="form-control" id="inputQualPosto">
                             </div>
-                            <button type="submit" class="btn btn-primary" href="#">Salvar</button>
-                       
+                            <input type="submit" class="btn btn-primary">
+                          </form>
                         </div>
 
                     </div>

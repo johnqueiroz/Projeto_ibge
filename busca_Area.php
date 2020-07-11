@@ -90,7 +90,8 @@
                   
           <?php
           $conexao = mysqli_connect("localhost", "root", "", "projeto_ibge");
-          $sql = $conexao -> query("SELECT area.nome_area, area.endereco_area, area.telefone_area, coord_area.nome_CoorArea, coord_area.telefone_Coord_area FROM area INNER JOIN coord_area ON area.nome_area = coord_area.area_Coord");
+          $sql = $conexao -> query("SELECT area.nome_area, area.endereco_area, area.telefone_area, coord_area.nome_CoorArea, coord_area.telefone_Coord_area FROM area 
+          INNER JOIN coord_area ON area.nome_area = coord_area.area_Coord");
 
           echo(' <table class="table table-hover" id="formCad">
             
