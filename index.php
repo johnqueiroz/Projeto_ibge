@@ -1,5 +1,20 @@
+<?php 
+// inicia a sessao na pagina e é preciso ter em todas as outras para continuar na mesma sessao
+  session_name("teste");
+  session_start();
+// variaveis superglobais que possibilitam o uso das mesmas em todas as partes do codigo e tem funcoes importantes para os equipamentos
+  $_SESSION['formulario'] = 1;
+  $_SESSION['checkbox'] = false;
+  $_SESSION['formulario_localidade'] = 1;
+  $_SESSION['ID_tipo'] = 0;
+  $_SESSION['data_recebimento'] = date('aaaa/mm/dd');
+  $_SESSION['ID_area'] = 0;
+  $_SESSION['option'] = 0;
+?>
+
 <html>
     <head>
+      <!-- Cabeçalho da página -->>
             <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
              <title>Sistemas de arquivo IBGE</title>
@@ -13,11 +28,13 @@
     </head>
 
 <body>
+
+
         <div class="container">
                 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
 
                     
-
+                    <!-- Div com container para usar um certo tamanho da tela e dentro tem a navbar que é a parte azul da tela com os menus de contatos e sair -->
                     <a class="navbar-brand" href="index.html" style="color: aliceblue;" >Sistema de Controle de Equipamento</a>
 
                     <div class= "collapse navbar-collapse" id="navbarSite">
@@ -37,7 +54,7 @@
                                       </div>
                             
                                     <li class="nav-item">
-                                      <a class="nav-link" href="index.html" style="color: aliceblue;">Sair</a>
+                                      <a class="nav-link" href="index.php" style="color: aliceblue;">Sair</a>
                                   </li>
                         </ul>
 
@@ -54,7 +71,7 @@
                 </div>
                 <br>
                 <br>
-
+   <!-- Formulário para envio de informações de login com siape e senha -->
                 <form id="ajeitada" name="form_entrada" action="entrada_sistema.php" method="POST">
                   <label class="sr-only" for="inlineFormInputSiape">Siape</label>
                   <input name="Siape_entrada" type="text" class="form-control mb-2 mr-sm-2" id="inlineFormInputSiape" placeholder="Ex: 3080572">
@@ -64,7 +81,7 @@
                     <div class="input-group-prepend">
                       
                     </div>
-                    <input name="senha_entrada" type="password" class="form-control" id="inlineFormInputSenha" placeholder="**********">
+                    <input name="senha_entrada" autocomplete="off" type="password" class="form-control" id="inlineFormInputSenha" placeholder="**********">
                   </div>
                 
                  

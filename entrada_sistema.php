@@ -8,7 +8,7 @@ if(isset($_POST["Siape_entrada"]) && isset($_POST["senha_entrada"])){
 
     $sql = mysqli_query("SELECT * FROM ssi WHERE siape_ssi = '$Siape_entrada' AND senha_ssi = '$senha_entrada'");
     $num = mysqli_num_rows($sql);
-echo'<script type="text/javascript">window.location = "cadastroEquipamentos.html"</script>';
+echo'<script type="text/javascript">window.location = "cadastroEquipamentos.php"</script>';
 }
 
 

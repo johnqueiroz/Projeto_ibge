@@ -7,7 +7,7 @@
 
              <link rel="stylesheet" href="estilo.css" type="text/css">
 
-             <link rel="icon" type="imagem/png" href="ms-icon-144x144.png" />
+             <link rel="icon" type="imagem/png" href="favicon-96x96.png" />
 
 
     </head>
@@ -45,29 +45,29 @@
                                 Gerenciamento
                               </button>
                               <div class="dropdown-menu" aria-labelledby="dropdownMenu3">
-                                <a href="#">    <button class="dropdown-item" type="button">Gerenciamento dos equipamentos</button></a>
-                               
-                              <a href="#">  <button class="dropdown-item" type="button">Gerenciamento Áreas/ Coordenadores</button></a>
-                              <a href="#">    <button class="dropdown-item" type="button" >Gerenciamento Subareas/ Supervisores</button></a>
-                              <a href="#">    <button class="dropdown-item" type="button">Gerenciamento Posto de Coleta/ ACM/ ACS</button></a>
+                                <a href="gerenciamento_equipamento.php">    <input type="submit" value="Equipamentos" class="dropdown-item"></a>
+                 
+                              <a href="gerenciamento_localidade.php">  <input type="submit" value="Localidades" class="dropdown-item"></a>
+
+                              <a href="gerenciamento_coordenadores.php">    <input type="submit" value="Coordenadores" class="dropdown-item"></a>
+                              
                               
                               </div>
                               </div>
                             <div class="dropdown">
                             <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenu3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                              Cadastro
+                              Cadastros
                             </button>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenu3">
-                              <a href="cadastroEquipamentos.html">    <button class="dropdown-item" type="button">Cadastro dos equipamentos</button></a>
-                              <a href="cadastroPorArea.html">    <button class="dropdown-item" type="button">Cadastro dos equipamentos por local</button></a>
-                            <a href="cadastroareas.html">  <button class="dropdown-item" type="button">Cadastro Áreas/ Coordenadores</button></a>
-                            <a href="cadastroSubarea.html">    <button class="dropdown-item" type="button" >Cadastro Subareas/ Supervisores</button></a>
-                            <a href="cadastroPostodeColeta.html">    <button class="dropdown-item" type="button">Cadastro Posto de Coleta/ ACM/ ACS</button></a>
+                            <a href="cadastroEquipamentos.php">    <button class="dropdown-item" type="button">Equipamentos</button></a>
+                            <a href="cadastroLocalidade.php">  <button class="dropdown-item" type="button">Localidades</button></a>
+                            <a href="CadastroServidor.php">    <button class="dropdown-item" type="button" >Servidores</button></a>
+                           
                             
                             </div>
                             </div>
                           <li class="nav-item">
-                            <a class="nav-link" href="index.html" style="color: aliceblue;">Sair</a>
+                            <a class="nav-link" href="index.php" style="color: aliceblue;">Sair</a>
                         </li>
               </ul>
 
@@ -81,39 +81,47 @@
       </nav>
               <br>
                 <div id="cadastro">
-                        Buscas Postos de Coleta
+                        Busca Equipamentos
 
                 </div>
        <br>
        <br>
         <div>
                   
-            <table class="table">
-              <thead>
-                  <tr>
-                      <th scope="col">Nome do Posto de Coleta</th>
-                      <th scope="col">Endereço</th>
-                      <th scope="col">Subarea pertencente</th>
-                      <th scope="col">Coordenador do Posto de Coleta</th>
-                      <th scope="col">Telefone do Coordenador</th>
-                      <th scope="col">Nome do/dos ACS</th>
-                      
-                  </tr>
-              </thead>
-  
-              <tbody>
-                  <tr>
-                      <td>Coisinha</td>
-                      <td>Rua lá de casa</td>
-                      <td>678 ta na hora de comer biscoito</td>
-                      <td>Jujubinha</td>
-                      <td>222222222</td>
-                      <td>Bichinho</td>
-                  </tr>
-  
-                 
-              </tbody>
-          </table>
+          <?php
+          $conexao = mysqli_connect("localhost", "root", "", "projeto_ibge");
+          $sql = $conexao -> query("SELECT equipamento.patrimonio, localidade.ID_local, equipamento.numero_de_serie, equipamento.data_de_recebimento,FROM equipamento 
+          INNER JOIN localidade ON equipamento.patrimonio = localidade.ID_localidade_equipamento");
+
+          echo(' <table class="table table-hover" id="formCad">
+            
+            <thead>
+              <tr>
+                  <th scope="col">Patrimônio</th>
+                  <th scope="col">Localidade</th>
+                  <th scope="col">Número de série</th>
+                  <th scope="col">Data de recebimento</th>
+                  
+              </tr>
+          </thead>');
+          
+          while($tabela = mysqli_fetch_array($sql)){
+            echo('
+            <tr>
+              <td>'.$tabela['patrimonio'].'</td>
+              <td>'.$tabela['ID_local'].'</td>
+              <td>'.$tabela['numero_de_serie'].'</td>
+              <td>'.$tabela['data_de_recebimento'].'</td>
+             
+           
+              </tr>
+            
+            ');
+
+          }
+
+        
+          ?>
       </div>
     </div>
 
