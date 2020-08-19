@@ -9,7 +9,7 @@ session_start();
 <html>
     <head>
             <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-
+            <script src="https://kit.fontawesome.com/e42d0736e1.js" crossorigin="anonymous"></script>
              <title>Sistemas de arquivo IBGE</title>
              <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 
@@ -20,6 +20,13 @@ session_start();
                 #bt_voltar{
                margin-left: 90%;
                     };
+
+               #fixo{
+                display:block;
+                position:fixed;
+               }
+              
+               
 </style>
 
     </head>
@@ -245,10 +252,10 @@ session_start();
           /*("SELECT * FROM `equipamento` INNER JOIN tipo on equipamento.ID_tipo = tipo.ID_tipo
                                     INNER JOIN status on equipamento.ID_status = status.ID_status
                                     where equipamento.ID_tipo = '$tipo' AND equipamento.ID_status = '$status'  ORDER BY  `patrimonio`  ASC ");*/
-
-          echo(' <table class="table table-hover" id="formCad">
+?>
+          <table class="table table-hover"  id="formCad">
             
-            <thead>
+            <thead id="fixo">
               <tr>
                   <th scope="col">Patrimônio</th>
                   <th scope="col">Número de série</th>
@@ -256,28 +263,145 @@ session_start();
                   <th scope="col">Status</th>
                   <th scope="col">Data de recebimento</th>
                   <th scope="col">Área</th>
+                  <th scope="col">Editar</th>
               </tr>
           </thead>
-          '
-        );
+          
+          <?php
           
           while($tabela = mysqli_fetch_array($sql)){
           
             echo('
             <tr>
 
-              <td> <a href="index.php" target="_blank">'.$tabela['patrimonio'].'</a></td>
+              <td>'.$tabela['patrimonio'].'</a></td>
               <td>'.$tabela['numero_de_serie'].'</td>
               <td>'.$tabela['tipo_equipamento'].'</td>
               <td>'.$tabela['status'].'</td>
               <td>'.$tabela['data_de_recebimento'].'</td>
               <td>'.$tabela['nome'].'</td>
-           
-              
+              '); ?>
+              <td> <button class="btn btn-outline-dark" data-target="#exampleModal" data-toggle="modal" patrimonio="<?php echo $tabela['patrimonio']; ?>" numero_de_serie="<?php echo $tabela['numero_de_serie']; ?>"Tipo_equipamento="<?php echo $tabela['ID_tipo'];?>" status="<?php echo $tabela['ID_status ']; ?>"> <i class="fas fa-edit"></i></td>
               </tr>
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+
+		  <div class="modal-dialog" role="document">
+		  	<div class="modal-content">
+
+			    <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				      
+         </div>
+         
+			  <div class="modal-body">
+
+        <form method="POST" action="atualizacao_equipamento.php" enctype="multipart/form-data">
+          
+				  <div class="form-group">
+					<label for="patrimonio" class="control-label">Patrimônio</label>
+					<input name="patrimonio" type="text" class="form-control" id="patrimonio">
+          </div>
+
+          <div class="form-group">
+					<label for="numero_de_serie" class="control-label">Número de Série:</label>
+					<input name="serie" type="text" class="form-control" id="numero_de_serie">
+          </div>
+
+				  <div class="form-group">
+                        <label for="Tipo_equipamento">Tipo do equipamento</label>
+                              <select name="Tipo_equipamento" id="Tipo_equipamento" class="form-control">
+                              <option value="">Escolher</option>
+
+                                      <?php
+                                      /* Código que trás o select de tipos de equipamentos, onde se inicia a conexao com o banco, depois cria o tipo de busca que será feita no banco e cria
+                                      a variavel que junta a conexao com a busca e depois um laço de repetição para enquanto tiver dado no banco, continue buscando. */
+                                      $conexao = mysqli_connect("localhost", "root", "", "projeto_ibge");
+
+                                      $result_tipo_equipamento = "SELECT * FROM tipo ORDER BY tipo_equipamento ASC";
+
+                                      $result_tipo_equipamento = mysqli_query($conexao, $result_tipo_equipamento);
+
+                                      while($row_tipo_equipamento = mysqli_fetch_assoc($result_tipo_equipamento) ) {
+                                        ?>
+
+                                        <option value="<?php echo $row_tipo_equipamento['ID_tipo']; ?>"><?php echo $row_tipo_equipamento ['tipo_equipamento'];  ?>
+                                        </option> <?php
+                                        }
+
+                                       
+                                        
+
+                                      ?>
+
+                              </select>
+          </div>
+
+          <div class="form-group ">
+                              <label for="status">Status do equipamento</label>
+                              <select name="status" id="status" class="form-control">
+                              <option value="">Escolher</option>
+
+                                      <?php
+                                      /* Código que trás o select de tipos de equipamentos, onde se inicia a conexao com o banco, depois cria o tipo de busca que será feita no banco e cria
+                                      a variavel que junta a conexao com a busca e depois um laço de repetição para enquanto tiver dado no banco, continue buscando. */
+                                      $conexao = mysqli_connect("localhost", "root", "", "projeto_ibge");
+
+                                      $result_status_equipamento = "SELECT * FROM status ORDER BY status ASC";
+
+                                      $result_status_equipamento = mysqli_query($conexao, $result_status_equipamento);
+
+                                      while($row_status_equipamento = mysqli_fetch_assoc($result_status_equipamento) ) {
+                                        ?>
+
+                                        <option value="<?php echo $row_status_equipamento['ID_status']; ?>"><?php echo $row_status_equipamento ['status'];  ?>
+                                        </option> <?php
+                                        }
+
+                                       
+                                        
+
+                                      ?>
+
+                              </select>
+
+                                      </div>
+          
+				<input name="id" type="hidden" class="form-control" id="id-equipamento" value="">
+				
+				<button type="button" class="btn btn-success" data-dismiss="modal">Cancelar</button>
+				<button type="submit" class="btn btn-danger">Alterar</button>
+			 
+				</form>
+			  </div>
+			  
+			</div>
+		  </div>
+		</div>
+              
+             
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+	<script type="text/javascript">
+		$('#exampleModal').on('show.bs.modal', function (event) {
+		  var button = $(event.relatedTarget) // Button that triggered the modal
+		  var patrimonio = button.data('patrimonio') // Extract info from data-* attributes
+		  var numero_de_serie = button.data('numero_de_serie')
+		  var Tipo_equipamento = button.data('Tipo_equipamento')
+      var status = button.data('status')
+		  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+		  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+		  var modal = $(this)
+		  modal.find('.modal-title').text(patrimonio)
+		  modal.find('#id-equipamento').val(patrimonio)
+		  modal.find('#numero_de_serie').val(numero_de_serie)
+		  modal.find('#Tipo_equipamento').val(Tipo_equipamento)
+      modal.find('#status').val(status)
+		  
+		})
+	</script>
             
-            ');
-            
+            <?php
           }
 
  
